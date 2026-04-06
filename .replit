@@ -1,29 +1,32 @@
 modules = ["nodejs-24"]
 
-[[artifacts]]
-id = "artifacts/api-server"
+  [[artifacts]]
+  id = "artifacts/api-server"
 
-[[artifacts]]
-id = "artifacts/mockup-sandbox"
+  [[artifacts]]
+  id = "artifacts/mockup-sandbox"
 
-[deployment]
-router = "application"
-deploymentTarget = "autoscale"
+  [[artifacts]]
+  id = "artifacts/widya-nusantara"
 
-[deployment.postBuild]
-args = ["pnpm", "store", "prune"]
-env = { "CI" = "true" }
+  [deployment]
+  router = "application"
+  deploymentTarget = "autoscale"
 
-[workflows]
-runButton = "Project"
+  [deployment.postBuild]
+  args = ["pnpm", "store", "prune"]
+  env = { "CI" = "true" }
 
-[agent]
-stack = "PNPM_WORKSPACE"
-expertMode = true
+  [workflows]
+  runButton = "Project"
 
-[postMerge]
-path = "scripts/post-merge.sh"
-timeoutMs = 20000
+  [agent]
+  stack = "PNPM_WORKSPACE"
+  expertMode = true
+
+  [postMerge]
+  path = "scripts/post-merge.sh"
+  timeoutMs = 20000
 
 [[ports]]
 localPort = 8080
@@ -32,3 +35,4 @@ externalPort = 8080
 [[ports]]
 localPort = 8081
 externalPort = 80
+  

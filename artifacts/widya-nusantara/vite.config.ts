@@ -26,6 +26,8 @@ if (!basePath) {
   );
 }
 
+const workspaceRoot = path.resolve(import.meta.dirname, "../..");
+
 export default defineConfig({
   base: basePath,
   plugins: [
@@ -37,13 +39,13 @@ export default defineConfig({
       ? [
           await import("@replit/vite-plugin-cartographer").then((m) =>
             m.cartographer({
-              root: path.resolve(import.meta.dirname, ".."),
+              root: workspaceRoot,
             }),
-          ),
+          ).catch(() => null),
           await import("@replit/vite-plugin-dev-banner").then((m) =>
             m.devBanner(),
-          ),
-        ]
+          ).catch(() => null),
+        ].filter(Boolean)
       : []),
   ],
   resolve: {
@@ -60,6 +62,7 @@ export default defineConfig({
   },
   server: {
     port,
+    strictPort: true,
     host: "0.0.0.0",
     allowedHosts: true,
     fs: {
