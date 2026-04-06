@@ -1,0 +1,743 @@
+<!-- 
+  ╔══════════════════════════════════════════════════════════════════╗
+  ║   WIDYA NUSANTARA ACADEMY — KODE BLOGGER/BLOGSPOT               ║
+  ║   Halaman: BERANDA (Home)                                        ║
+  ║   Cara penggunaan:                                               ║
+  ║   1. Buka Blogger → Halaman Baru atau Postingan Baru            ║
+  ║   2. Klik "Edit HTML" (bukan mode tulis)                        ║
+  ║   3. Paste seluruh kode HTML ini                                 ║
+  ║   4. Simpan / Publish                                            ║
+  ╚══════════════════════════════════════════════════════════════════╝
+-->
+
+<!-- Tambahkan kode CSS ini di bagian <head> tema Blogger kamu (Tema → Edit HTML → sebelum </head>) -->
+<style>
+/* ─── GLOBAL STYLES ─── */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --navy: #0f172a;
+  --navy-mid: #1e3a5f;
+  --gold: #b8860b;
+  --gold-light: #ffd700;
+  --cream: #f5f7fa;
+  --text: #334155;
+  --muted: #94a3b8;
+}
+
+body { font-family: 'Poppins', sans-serif; color: var(--text); }
+
+.wna-section { padding: 60px 20px; max-width: 1100px; margin: 0 auto; }
+.wna-section-full { padding: 60px 20px; }
+
+h1, h2, h3, h4 { font-family: 'Playfair Display', Georgia, serif; }
+
+/* ─── BATIK DECORATIVE PATTERNS ─── */
+.batik-bg {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill='none' stroke='%23b8860b' stroke-width='0.6' opacity='0.12'%3E%3Cellipse cx='20' cy='20' rx='14' ry='8' transform='rotate(45 20 20)'/%3E%3Cellipse cx='20' cy='20' rx='14' ry='8' transform='rotate(-45 20 20)'/%3E%3Cellipse cx='60' cy='20' rx='14' ry='8' transform='rotate(45 60 20)'/%3E%3Cellipse cx='60' cy='20' rx='14' ry='8' transform='rotate(-45 60 20)'/%3E%3Cellipse cx='20' cy='60' rx='14' ry='8' transform='rotate(45 20 60)'/%3E%3Cellipse cx='20' cy='60' rx='14' ry='8' transform='rotate(-45 20 60)'/%3E%3Cellipse cx='60' cy='60' rx='14' ry='8' transform='rotate(45 60 60)'/%3E%3Cellipse cx='60' cy='60' rx='14' ry='8' transform='rotate(-45 60 60)'/%3E%3Ccircle cx='40' cy='40' r='2'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* ─── HERO ─── */
+.wna-hero {
+  background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 40%, #0f2548 70%, #0f172a 100%);
+  padding: 80px 20px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.wna-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill='none' stroke='%23b8860b' stroke-width='0.6' opacity='0.15'%3E%3Cellipse cx='20' cy='20' rx='14' ry='8' transform='rotate(45 20 20)'/%3E%3Cellipse cx='60' cy='60' rx='14' ry='8' transform='rotate(45 60 60)'/%3E%3C/g%3E%3C/svg%3E");
+  pointer-events: none;
+}
+.wna-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(184,134,11,0.2);
+  border: 1px solid rgba(184,134,11,0.4);
+  border-radius: 50px;
+  padding: 8px 18px;
+  color: #ffd700;
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 24px;
+}
+.wna-hero-badge span.dot {
+  width: 8px;
+  height: 8px;
+  background: #ffd700;
+  border-radius: 50%;
+  display: inline-block;
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255,215,0,0.4); }
+  50% { box-shadow: 0 0 0 8px rgba(255,215,0,0); }
+}
+.wna-hero h1 {
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  font-weight: 800;
+  color: white;
+  line-height: 1.2;
+  margin-bottom: 12px;
+}
+.wna-hero h1 span {
+  background: linear-gradient(135deg, #b8860b, #ffd700, #b8860b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: block;
+}
+.wna-hero-tagline {
+  color: var(--muted);
+  font-size: 1.1rem;
+  max-width: 550px;
+  margin: 0 auto 24px;
+  line-height: 1.7;
+}
+.wna-ornament-line {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 12px auto 24px;
+}
+.wna-ornament-line::before,
+.wna-ornament-line::after {
+  content: '';
+  width: 80px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #b8860b, transparent);
+}
+.wna-ornament-diamond {
+  width: 10px;
+  height: 10px;
+  background: #b8860b;
+  transform: rotate(45deg);
+  opacity: 0.6;
+}
+.wna-price-box {
+  display: inline-block;
+  background: rgba(184,134,11,0.15);
+  border: 1px solid rgba(184,134,11,0.3);
+  border-radius: 20px;
+  padding: 20px 30px;
+  margin-bottom: 28px;
+  backdrop-filter: blur(10px);
+}
+.wna-price-small { color: var(--muted); font-size: 13px; margin-bottom: 4px; }
+.wna-price-big { color: #ffd700; font-size: 2.8rem; font-weight: 800; font-family: 'Playfair Display', serif; }
+.wna-price-period { color: var(--gold); font-size: 1rem; font-weight: 500; }
+.wna-quota-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(239,68,68,0.2);
+  border: 1px solid rgba(239,68,68,0.3);
+  border-radius: 50px;
+  padding: 4px 12px;
+  color: #fca5a5;
+  font-size: 12px;
+  margin-top: 8px;
+}
+.wna-btn-row {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+.wna-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #b8860b;
+  color: white;
+  font-weight: 700;
+  font-size: 1.05rem;
+  padding: 14px 28px;
+  border-radius: 12px;
+  text-decoration: none;
+  transition: all 0.2s;
+  box-shadow: 0 4px 15px rgba(184,134,11,0.35);
+}
+.wna-btn-primary:hover { background: #8b6508; box-shadow: 0 6px 20px rgba(184,134,11,0.4); }
+.wna-btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 2px solid rgba(184,134,11,0.5);
+  color: #ffd700;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 14px 28px;
+  border-radius: 12px;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+.wna-btn-outline:hover { background: rgba(184,134,11,0.1); }
+.wna-date-info {
+  color: var(--muted);
+  font-size: 13px;
+}
+.wna-date-info strong { color: #ffd700; }
+
+/* ─── HERO WAVE ─── */
+.wna-wave {
+  background: var(--cream);
+}
+.wna-wave svg { display: block; width: 100%; }
+
+/* ─── STATS STRIP ─── */
+.wna-stats {
+  background: var(--cream);
+  padding: 40px 20px;
+}
+.wna-stats-grid {
+  max-width: 900px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+@media (min-width: 640px) {
+  .wna-stats-grid { grid-template-columns: repeat(4, 1fr); }
+}
+.wna-stat-card {
+  background: white;
+  border-radius: 16px;
+  padding: 20px 16px;
+  text-align: center;
+  border: 1px solid rgba(184,134,11,0.12);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+.wna-stat-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #0f172a;
+}
+.wna-stat-num span { color: #b8860b; }
+.wna-stat-label { color: #94a3b8; font-size: 12px; margin-top: 4px; }
+
+/* ─── SECTION HEADING ─── */
+.wna-section-label {
+  color: #b8860b;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-bottom: 8px;
+}
+.wna-section-title {
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 8px;
+}
+.wna-section-desc {
+  color: #64748b;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  max-width: 580px;
+  margin: 16px auto 0;
+}
+
+/* ─── KEUNGGULAN CARDS ─── */
+.wna-cards-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  margin-top: 40px;
+}
+@media (min-width: 480px) { .wna-cards-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 900px) { .wna-cards-grid { grid-template-columns: repeat(4, 1fr); } }
+
+.wna-card {
+  background: white;
+  border: 1px solid rgba(184,134,11,0.15);
+  border-radius: 20px;
+  padding: 24px;
+  transition: all 0.3s;
+  position: relative;
+}
+.wna-card::before {
+  content: '';
+  position: absolute;
+  top: -2px; left: -2px; right: -2px; bottom: -2px;
+  border: 1px solid rgba(184,134,11,0.06);
+  border-radius: inherit;
+  pointer-events: none;
+}
+.wna-card:hover {
+  box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+  transform: translateY(-4px);
+}
+.wna-card-icon {
+  width: 52px;
+  height: 52px;
+  background: rgba(184,134,11,0.1);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin-bottom: 16px;
+}
+.wna-card h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 8px;
+}
+.wna-card p { color: #64748b; font-size: 0.85rem; line-height: 1.6; }
+
+/* ─── PROGRAM PREVIEW ─── */
+.wna-bg-cream { background: linear-gradient(180deg, #f5f7fa 0%, #eef0f5 100%); }
+.wna-prog-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin-top: 40px;
+}
+@media (min-width: 640px) { .wna-prog-grid { grid-template-columns: repeat(2, 1fr); } }
+
+.wna-prog-card {
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  transition: all 0.3s;
+}
+.wna-prog-card:hover { box-shadow: 0 8px 30px rgba(0,0,0,0.1); transform: translateY(-4px); }
+.wna-prog-strip { width: 6px; flex-shrink: 0; }
+.wna-prog-strip-1 { background: linear-gradient(180deg, #0f172a, #1e3a5f); }
+.wna-prog-strip-2 { background: linear-gradient(180deg, #7c2d12, #b8860b); }
+.wna-prog-strip-3 { background: linear-gradient(180deg, #064e3b, #065f46); }
+.wna-prog-strip-4 { background: linear-gradient(180deg, #4c1d95, #5b21b6); }
+.wna-prog-inner { display: flex; align-items: flex-start; gap: 14px; padding: 20px; }
+.wna-prog-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+.wna-prog-icon-1 { background: linear-gradient(135deg, #0f172a, #1e3a5f); }
+.wna-prog-icon-2 { background: linear-gradient(135deg, #7c2d12, #b8860b); }
+.wna-prog-icon-3 { background: linear-gradient(135deg, #064e3b, #065f46); }
+.wna-prog-icon-4 { background: linear-gradient(135deg, #4c1d95, #5b21b6); }
+.wna-prog-info h3 { font-size: 1rem; font-weight: 700; color: #0f172a; margin-bottom: 6px; }
+.wna-prog-info p { color: #64748b; font-size: 0.82rem; line-height: 1.6; }
+
+/* ─── FASILITAS & PRICE ─── */
+.wna-two-col {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+  align-items: center;
+}
+@media (min-width: 768px) { .wna-two-col { grid-template-columns: 1fr 1fr; } }
+
+.wna-checklist { list-style: none; margin: 20px 0; }
+.wna-checklist li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 12px;
+  color: #334155;
+  font-size: 0.92rem;
+}
+.wna-checklist li::before {
+  content: '✓';
+  color: #b8860b;
+  font-weight: 700;
+  font-size: 1rem;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.wna-price-card {
+  background: linear-gradient(135deg, #0f172a, #1e3a5f);
+  border-radius: 24px;
+  padding: 32px;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+.wna-price-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill='none' stroke='%23b8860b' stroke-width='0.6' opacity='0.12'%3E%3Cellipse cx='20' cy='20' rx='14' ry='8' transform='rotate(45 20 20)'/%3E%3C/g%3E%3C/svg%3E");
+  pointer-events: none;
+}
+.wna-price-card .price-label { color: #94a3b8; font-size: 13px; }
+.wna-price-card .price-amount { color: #ffd700; font-size: 3rem; font-weight: 800; font-family: 'Playfair Display', serif; }
+.wna-price-card .price-period { color: #b8860b; font-size: 1rem; margin-bottom: 20px; }
+.wna-price-card .wna-checklist li { color: #94a3b8; }
+.wna-price-card .wna-checklist li::before { color: #b8860b; }
+.wna-quota-warning {
+  background: rgba(239,68,68,0.15);
+  border: 1px solid rgba(239,68,68,0.3);
+  border-radius: 12px;
+  padding: 10px 14px;
+  color: #fca5a5;
+  font-size: 13px;
+  margin: 16px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.wna-price-card .wna-btn-primary { width: 100%; justify-content: center; }
+
+/* ─── CORE VALUES (DARK) ─── */
+.wna-dark-section {
+  background: linear-gradient(135deg, #0f172a 0%, #1a2a5e 100%);
+  padding: 60px 20px;
+}
+.wna-dark-section .wna-section-title { color: white; }
+.wna-dark-section .wna-section-label { color: #b8860b; }
+
+.wna-values-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  margin-top: 40px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+@media (min-width: 640px) { .wna-values-grid { grid-template-columns: repeat(3, 1fr); } }
+
+.wna-value-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 20px;
+  padding: 28px;
+  transition: background 0.2s;
+}
+.wna-value-card:hover { background: rgba(255,255,255,0.10); }
+.wna-value-emoji { font-size: 2rem; margin-bottom: 14px; }
+.wna-value-badge {
+  display: inline-block;
+  background: rgba(184,134,11,0.2);
+  border: 1px solid rgba(184,134,11,0.3);
+  border-radius: 50px;
+  padding: 3px 12px;
+  color: #ffd700;
+  font-size: 11px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.wna-value-card h3 { color: white; font-size: 1.1rem; margin-bottom: 8px; }
+.wna-value-card p { color: #94a3b8; font-size: 0.83rem; line-height: 1.6; }
+
+/* ─── CTA FINAL ─── */
+.wna-cta-section {
+  background: white;
+  padding: 60px 20px;
+  text-align: center;
+  position: relative;
+}
+.wna-cta-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill='none' stroke='%23b8860b' stroke-width='0.6' opacity='0.06'%3E%3Cellipse cx='40' cy='40' rx='30' ry='15' transform='rotate(45 40 40)'/%3E%3C/g%3E%3C/svg%3E");
+  pointer-events: none;
+}
+.wna-cta-section .wna-section-title { font-size: 2rem; }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 480px) {
+  .wna-btn-row { flex-direction: column; align-items: center; }
+  .wna-price-big { font-size: 2.2rem; }
+}
+</style>
+
+<!-- ═════════════════════════════════════════════════════════ -->
+<!-- MULAI KONTEN HALAMAN BERANDA -->
+<!-- ═════════════════════════════════════════════════════════ -->
+
+<!-- ─── HERO SECTION ─── -->
+<section class="wna-hero">
+  <div style="position:relative;z-index:1;">
+    <div class="wna-hero-badge">
+      <span class="dot"></span>
+      Bimbel UTBK Eksklusif di bawah Rubela Indonesia
+    </div>
+
+    <h1>
+      Membuka Jalan Menuju
+      <span>Kampus Impian</span>
+    </h1>
+
+    <p class="wna-hero-tagline">
+      Membangun Generasi Nusantara yang Unggul dan Berdaya Saing Tinggi
+    </p>
+
+    <div class="wna-ornament-line">
+      <div class="wna-ornament-diamond"></div>
+    </div>
+
+    <div class="wna-price-box">
+      <p class="wna-price-small">Biaya Bimbel Hanya</p>
+      <div class="wna-price-big">Rp160.000</div>
+      <div class="wna-price-period">untuk 5 Bulan Penuh</div>
+      <div style="margin-top:10px;">
+        <span class="wna-quota-badge">
+          ⚠️ Kuota Terbatas — Hanya 100 Murid!
+        </span>
+      </div>
+    </div>
+
+    <div class="wna-btn-row">
+      <a href="/p/pendaftaran.html" class="wna-btn-primary">
+        Daftar Sekarang →
+      </a>
+      <a href="/p/program.html" class="wna-btn-outline">
+        Lihat Program
+      </a>
+    </div>
+
+    <p class="wna-date-info">
+      📅 Masa Pendaftaran: <strong>6 April – 27 September 2026</strong>
+    </p>
+  </div>
+</section>
+
+<!-- Wave separator -->
+<div class="wna-wave">
+  <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 30 C360 60 720 0 1080 30 C1260 45 1350 15 1440 30 L1440 60 L0 60 Z"
+          fill="#0f172a"/>
+  </svg>
+</div>
+
+<!-- ─── STATS ─── -->
+<section class="wna-stats">
+  <div class="wna-stats-grid">
+    <div class="wna-stat-card">
+      <div class="wna-stat-num">100</div>
+      <div class="wna-stat-label">Kuota Murid</div>
+    </div>
+    <div class="wna-stat-card">
+      <div class="wna-stat-num">5<span> bln</span></div>
+      <div class="wna-stat-label">Durasi Program</div>
+    </div>
+    <div class="wna-stat-card">
+      <div class="wna-stat-num">6<span>x</span></div>
+      <div class="wna-stat-label">Simulasi Try Out</div>
+    </div>
+    <div class="wna-stat-card">
+      <div class="wna-stat-num">Rp160K</div>
+      <div class="wna-stat-label">5 Bulan Program</div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── MENGAPA WIDYA NUSANTARA ─── -->
+<section class="wna-section-full" style="background:white;position:relative;" class="batik-bg">
+  <div class="wna-section" style="text-align:center;">
+    <p class="wna-section-label">Keunggulan Kami</p>
+    <h2 class="wna-section-title">Mengapa Memilih Widya Nusantara Academy?</h2>
+    <div class="wna-ornament-line" style="max-width:300px;margin:12px auto;">
+      <div class="wna-ornament-diamond"></div>
+    </div>
+    <p class="wna-section-desc">
+      Kami bukan sekadar bimbingan belajar biasa. Kami adalah ekosistem pendukung yang mempersiapkan mental, strategi, dan akademik siswa secara holistik.
+    </p>
+
+    <div class="wna-cards-grid">
+      <div class="wna-card">
+        <div class="wna-card-icon">🏆</div>
+        <h3>Pengalaman &amp; Reputasi</h3>
+        <p>Didukung manajemen Rubela yang sudah sangat memahami psikologi dan kebutuhan akademik siswa kelas 12 di Indonesia.</p>
+      </div>
+      <div class="wna-card">
+        <div class="wna-card-icon">🎯</div>
+        <h3>Sistem Belajar Adaptif</h3>
+        <p>Menggunakan pendekatan personalisasi — kelemahan siswa dideteksi sejak awal dan diberikan porsi latihan khusus.</p>
+      </div>
+      <div class="wna-card">
+        <div class="wna-card-icon">⭐</div>
+        <h3>Tutor Inspiratif</h3>
+        <p>Pengajar merupakan praktisi pendidikan dan mahasiswa/alumni PTN Top di Indonesia yang telah menaklukkan ketatnya seleksi masuk kampus.</p>
+      </div>
+      <div class="wna-card">
+        <div class="wna-card-icon">🌱</div>
+        <h3>Bimbel Berjiwa Sosial</h3>
+        <p>Setiap siswa berbayar otomatis berkontribusi pada program pendidikan Yayasan Rubela untuk pelajar di pelosok Indonesia.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PROGRAM UNGGULAN ─── -->
+<section class="wna-section-full wna-bg-cream" style="position:relative;">
+  <div class="wna-section" style="text-align:center;">
+    <p class="wna-section-label">Program Kami</p>
+    <h2 class="wna-section-title">Program Unggulan</h2>
+    <div class="wna-ornament-line" style="max-width:300px;margin:12px auto;">
+      <div class="wna-ornament-diamond"></div>
+    </div>
+
+    <div class="wna-prog-grid">
+      <div class="wna-prog-card">
+        <div class="wna-prog-strip wna-prog-strip-1"></div>
+        <div class="wna-prog-inner">
+          <div class="wna-prog-icon wna-prog-icon-1">📚</div>
+          <div class="wna-prog-info">
+            <h3>Intensive UTBK Mastery</h3>
+            <p>Program kelas reguler dan privat yang membedah tuntas materi TPS, Literasi Bahasa (Indonesia &amp; Inggris), dan Penalaran Matematika.</p>
+          </div>
+        </div>
+      </div>
+      <div class="wna-prog-card">
+        <div class="wna-prog-strip wna-prog-strip-2"></div>
+        <div class="wna-prog-inner">
+          <div class="wna-prog-icon wna-prog-icon-2">⚡</div>
+          <div class="wna-prog-info">
+            <h3>Rubela Tryout System (RTS)</h3>
+            <p>Simulasi UTBK berkala menggunakan sistem CBT yang didesain semirip mungkin dengan format asli, dilengkapi Item Response Theory (IRT).</p>
+          </div>
+        </div>
+      </div>
+      <div class="wna-prog-card">
+        <div class="wna-prog-strip wna-prog-strip-3"></div>
+        <div class="wna-prog-inner">
+          <div class="wna-prog-icon wna-prog-icon-3">👥</div>
+          <div class="wna-prog-info">
+            <h3>Campus Mentoring &amp; Strategy</h3>
+            <p>Sesi konsultasi 1-on-1 bersama mentor alumni PTN ternama untuk analisis rasio keketatan jurusan dan strategi lolos SNBT.</p>
+          </div>
+        </div>
+      </div>
+      <div class="wna-prog-card">
+        <div class="wna-prog-strip wna-prog-strip-4"></div>
+        <div class="wna-prog-inner">
+          <div class="wna-prog-icon wna-prog-icon-4">🏕️</div>
+          <div class="wna-prog-info">
+            <h3>Bootcamp Karantina (Supercamp)</h3>
+            <p>Program belajar intensif menjelang hari-H ujian dengan pendampingan 24 jam, fasilitas penginapan, dan asupan gizi yang terjaga.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:32px;">
+      <a href="/p/program.html" class="wna-btn-primary" style="background:transparent;color:#b8860b;border:2px solid #b8860b;box-shadow:none;">
+        Lihat Detail Program →
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FASILITAS + PRICE ─── -->
+<section class="wna-section-full" style="background:white;">
+  <div class="wna-section">
+    <div class="wna-two-col">
+      <div>
+        <p class="wna-section-label">Yang Kamu Dapatkan</p>
+        <h2 class="wna-section-title">Keuntungan Bergabung</h2>
+        <div class="wna-ornament-line" style="margin:12px 0;">
+          <div class="wna-ornament-diamond"></div>
+        </div>
+        <p style="color:#64748b;font-size:0.9rem;line-height:1.7;margin-bottom:16px;">
+          Dengan biaya yang sangat terjangkau, kamu mendapatkan akses ke ekosistem belajar yang komprehensif dan mendalam.
+        </p>
+        <ul class="wna-checklist">
+          <li>Kelas Intensif setiap hari selama 5 bulan</li>
+          <li>Konsultasi PTN &amp; soal-soal UTBK</li>
+          <li>Kelas tambahan untuk PK dan PM</li>
+          <li>Kelas tambahan untuk LBE dan LBI</li>
+          <li>Simulasi Try Out sebanyak 6x</li>
+        </ul>
+      </div>
+      <div>
+        <div class="wna-price-card" style="position:relative;">
+          <div style="position:relative;z-index:1;">
+            <p class="price-label">Biaya Bimbel</p>
+            <div class="price-amount">Rp160.000</div>
+            <div class="price-period">untuk 5 Bulan Program Penuh</div>
+            <ul class="wna-checklist">
+              <li>Semua kelas intensif harian</li>
+              <li>6x Simulasi Try Out RTS</li>
+              <li>Campus Mentoring &amp; Strategy</li>
+              <li>Konsultasi PTN unlimited</li>
+            </ul>
+            <div class="wna-quota-warning">
+              ⏰ Kuota Terbatas — Hanya 100 Murid!
+            </div>
+            <a href="/p/pendaftaran.html" class="wna-btn-primary" style="display:block;text-align:center;margin-top:8px;">
+              Amankan Kursimu Sekarang
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CORE VALUES ─── -->
+<section class="wna-dark-section">
+  <div style="max-width:900px;margin:0 auto;text-align:center;">
+    <p class="wna-section-label">Core Values</p>
+    <h2 class="wna-section-title">Nilai Utama Kami</h2>
+    <div class="wna-ornament-line" style="max-width:300px;margin:12px auto;">
+      <div class="wna-ornament-diamond"></div>
+    </div>
+
+    <div class="wna-values-grid">
+      <div class="wna-value-card">
+        <div class="wna-value-emoji">🏆</div>
+        <div class="wna-value-badge">Excellence</div>
+        <h3>Keunggulan Akademik</h3>
+        <p>Standar pengajaran tinggi dengan materi yang tajam dan relevan sesuai perkembangan sistem seleksi terbaru.</p>
+      </div>
+      <div class="wna-value-card">
+        <div class="wna-value-emoji">🤝</div>
+        <div class="wna-value-badge">Integrity</div>
+        <h3>Integritas</h3>
+        <p>Mengedepankan proses belajar yang jujur, disiplin, dan bertanggung jawab demi hasil yang nyata dan terukur.</p>
+      </div>
+      <div class="wna-value-card">
+        <div class="wna-value-emoji">🌱</div>
+        <div class="wna-value-badge">Impact</div>
+        <h3>Dampak Sosial</h3>
+        <p>Setiap siswa yang mendaftar turut berkontribusi pada program sosial pendidikan Rubela Indonesia untuk pelajar kurang mampu.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CTA FINAL ─── -->
+<section class="wna-cta-section">
+  <div style="max-width:700px;margin:0 auto;position:relative;">
+    <h2 class="wna-section-title" style="font-size:2rem;margin-bottom:16px;">
+      Siap Meraih PTN Impianmu?
+    </h2>
+    <p style="color:#64748b;font-size:1rem;line-height:1.7;margin-bottom:28px;">
+      Jangan tunda lagi! Bergabunglah dengan ratusan siswa yang sudah mempersiapkan diri bersama Widya Nusantara Academy. Kuota hanya 100 murid — segera amankan tempatmu!
+    </p>
+    <div class="wna-btn-row" style="justify-content:center;">
+      <a href="/p/pendaftaran.html" class="wna-btn-primary">
+        Daftar Sekarang — Rp160.000 →
+      </a>
+      <a href="https://wa.me/6289536039675" class="wna-btn-outline" style="border-color:#b8860b;color:#b8860b;">
+        📱 Tanya via WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
