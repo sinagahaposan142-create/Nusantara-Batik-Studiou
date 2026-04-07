@@ -57,12 +57,20 @@ export default function Navbar() {
           <div className="flex items-center justify-between h-16 md:h-20">
             {/* Logo */}
             <Link href="/" data-testid="link-logo">
-              <div className="flex items-center cursor-pointer group">
+              <div className="flex items-center gap-2 cursor-pointer group">
                 <img
                   src="/logo.png"
                   alt="Widya Nusantara Academy"
                   className="h-12 md:h-16 w-auto object-contain transition-transform duration-200 group-hover:scale-105"
                 />
+                <div>
+                  <div className="font-serif font-bold text-[#0f172a] text-sm md:text-base leading-tight tracking-wide">
+                    Widya Nusantara
+                  </div>
+                  <div className="text-[#b8860b] text-[10px] md:text-xs font-medium tracking-widest uppercase">
+                    Academy
+                  </div>
+                </div>
               </div>
             </Link>
 
