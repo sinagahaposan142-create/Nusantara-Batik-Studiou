@@ -70,7 +70,7 @@ const programList = [
 ];
 
 const fasilitas = [
-  "Kelas Intensif setiap hari selama 5 bulan",
+  "Kelas Intensif ONLINE setiap hari selama 5 bulan",
   "Konsultasi PTN & soal-soal UTBK",
   "Kelas tambahan untuk PK dan PM",
   "Kelas tambahan untuk LBE dan LBI",
@@ -79,7 +79,7 @@ const fasilitas = [
 
 const stats = [
   { num: "100", label: "Kuota Murid", suffix: "" },
-  { num: "5", label: "Bulan Program", suffix: " Bulan" },
+  { num: "5", label: "Kelas Online", suffix: " Bulan" },
   { num: "6", label: "Simulasi Try Out", suffix: "x" },
   { num: "Rp160K", label: "Untuk 5 Bulan", suffix: "" },
 ];
@@ -484,14 +484,14 @@ export default function Home() {
             Siap Meraih PTN Impianmu?
           </h2>
           <p className="text-gray-600 text-lg mb-8 leading-relaxed">
-            Jangan tunda lagi! Bergabunglah dengan ratusan siswa yang sudah
+            Jangan tunda lagi! Bergabunglah dengan puluhan murid yang sudah
             mempersiapkan diri bersama Widya Nusantara Academy. Kuota hanya 100
             murid!
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link href="/daftar" data-testid="cta-daftar">
               <span className="flex items-center gap-2 px-8 py-4 bg-[#b8860b] hover:bg-[#8b6508] text-white font-bold text-lg rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer">
-                Daftar Sekarang — Rp160.000
+                Daftar Sekarang Juga
                 <ChevronRight className="w-5 h-5" />
               </span>
             </Link>
