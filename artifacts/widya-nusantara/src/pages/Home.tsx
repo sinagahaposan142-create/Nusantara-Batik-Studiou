@@ -1,17 +1,34 @@
 import { Link } from "wouter";
-import { CheckCircle, Clock, Users, Award, BookOpen, Target, TrendingUp, Star, ChevronRight, Phone, Calendar, Zap } from "lucide-react";
-import { BatikDivider, BatikCornerDecor, BatikFlower } from "../components/BatikOrnament";
+import {
+  CheckCircle,
+  Clock,
+  Users,
+  Award,
+  BookOpen,
+  Target,
+  TrendingUp,
+  Star,
+  ChevronRight,
+  Phone,
+  Calendar,
+  Zap,
+} from "lucide-react";
+import {
+  BatikDivider,
+  BatikCornerDecor,
+  BatikFlower,
+} from "../components/BatikOrnament";
 
 const keunggulan = [
   {
     icon: <Award className="w-7 h-7 text-[#b8860b]" />,
     title: "Pengalaman & Reputasi",
-    desc: "Didukung manajemen Rubela yang sudah sangat memahami psikologi dan kebutuhan akademik siswa kelas 12 di Indonesia.",
+    desc: "Didukung oleh Rubela Indonesia yang sudah sangat memahami psikologi dan kebutuhan akademik siswa kelas 12 di Indonesia.",
   },
   {
     icon: <Target className="w-7 h-7 text-[#b8860b]" />,
     title: "Sistem Belajar Adaptif",
-    desc: "Menggunakan pendekatan personalisasi — kelemahan siswa dideteksi sejak awal dan diberikan porsi latihan khusus.",
+    desc: "Menggunakan pendekatan personalisasi kelemahan siswa dilihat sejak awal dan diberikan porsi latihan khusus.",
   },
   {
     icon: <Star className="w-7 h-7 text-[#b8860b]" />,
@@ -21,7 +38,7 @@ const keunggulan = [
   {
     icon: <TrendingUp className="w-7 h-7 text-[#b8860b]" />,
     title: "Bimbel Berjiwa Sosial",
-    desc: "Setiap siswa berbayar otomatis berkontribusi pada program pendidikan Yayasan Rubela untuk pelajar di pelosok Indonesia.",
+    desc: "Setiap siswa berbayar otomatis berkontribusi pada program pendidikan Organisasi Rubela Indonesia untuk pelajar di Indonesia.",
   },
 ];
 
@@ -62,17 +79,22 @@ const fasilitas = [
 
 const stats = [
   { num: "100", label: "Kuota Murid", suffix: "" },
-  { num: "5", label: "Bulan Program", suffix: " bln" },
+  { num: "5", label: "Bulan Program", suffix: " Bulan" },
   { num: "6", label: "Simulasi Try Out", suffix: "x" },
-  { num: "Rp160K", label: "Hanya 5 Bulan", suffix: "" },
+  { num: "Rp160K", label: "Untuk 5 Bulan", suffix: "" },
 ];
 
 export default function Home() {
   return (
     <div className="min-h-screen" data-testid="page-home">
-
       {/* ─── HERO SECTION ─── */}
-      <section className="relative overflow-hidden" style={{ background: "linear-gradient(135deg, #0f172a 0%, #1e3a5f 40%, #0f2548 70%, #0f172a 100%)" }}>
+      <section
+        className="relative overflow-hidden"
+        style={{
+          background:
+            "linear-gradient(135deg, #0f172a 0%, #1e3a5f 40%, #0f2548 70%, #0f172a 100%)",
+        }}
+      >
         {/* Batik background pattern */}
         <div className="absolute inset-0 batik-kawung-bg opacity-25 pointer-events-none" />
         <div className="absolute inset-0 batik-mega-mendung-bg opacity-30 pointer-events-none" />
@@ -101,12 +123,23 @@ export default function Home() {
           {/* Badge */}
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#b8860b]/20 border border-[#b8860b]/40 rounded-full mb-6 animate-float-up">
             <span className="w-2 h-2 bg-[#ffd700] rounded-full pulse-gold"></span>
-            <span className="text-[#ffd700] text-sm font-medium">Bimbel UTBK Eksklusif di bawah Rubela Indonesia</span>
+            <span className="text-[#ffd700] text-sm font-medium">
+              Bimbel UTBK Eksklusif di bawah Rubela Indonesia
+            </span>
           </div>
 
           <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-4 animate-float-up-delay-1">
             Membuka Jalan Menuju
-            <span className="block" style={{ background: "linear-gradient(135deg, #b8860b, #ffd700, #b8860b)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+            <span
+              className="block"
+              style={{
+                background:
+                  "linear-gradient(135deg, #b8860b, #ffd700, #b8860b)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+              }}
+            >
               Kampus Impian
             </span>
           </h1>
@@ -121,11 +154,17 @@ export default function Home() {
           <div className="inline-block mt-4 mb-8 animate-float-up-delay-2">
             <div className="bg-[#b8860b]/15 border border-[#b8860b]/30 rounded-2xl px-6 py-4 backdrop-blur-sm">
               <p className="text-[#94a3b8] text-sm mb-1">Biaya Bimbel Hanya</p>
-              <p className="text-[#ffd700] text-4xl md:text-5xl font-bold font-serif">Rp160.000</p>
-              <p className="text-[#b8860b] text-base font-medium">untuk 5 Bulan Penuh</p>
+              <p className="text-[#ffd700] text-4xl md:text-5xl font-bold font-serif">
+                Rp160.000
+              </p>
+              <p className="text-[#b8860b] text-base font-medium">
+                untuk 5 Bulan Penuh
+              </p>
               <div className="flex items-center justify-center gap-2 mt-2">
                 <span className="text-white/70 text-sm">Kuota</span>
-                <span className="bg-red-500 text-white text-xs font-bold px-2 py-0.5 rounded-full">TERBATAS</span>
+                <span className="bg-red-500 text-white text-xs font-bold px-2 py-0.5 rounded-full">
+                  TERBATAS
+                </span>
                 <span className="text-white/70 text-sm">100 Murid</span>
               </div>
             </div>
@@ -148,14 +187,27 @@ export default function Home() {
           {/* Pendaftaran info */}
           <div className="flex items-center justify-center gap-2 mt-8 text-[#94a3b8] text-sm">
             <Calendar className="w-4 h-4 text-[#b8860b]" />
-            <span>Masa Pendaftaran: <strong className="text-[#ffd700]">6 April – 27 September 2026</strong></span>
+            <span>
+              Masa Pendaftaran:{" "}
+              <strong className="text-[#ffd700]">
+                6 April – 27 September 2026
+              </strong>
+            </span>
           </div>
         </div>
 
         {/* Bottom wave */}
         <div className="text-[#f5f7fa]">
-          <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full">
-            <path d="M0 30 C360 60 720 0 1080 30 C1260 45 1350 15 1440 30 L1440 60 L0 60 Z" fill="currentColor"/>
+          <svg
+            viewBox="0 0 1440 60"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className="w-full"
+          >
+            <path
+              d="M0 30 C360 60 720 0 1080 30 C1260 45 1350 15 1440 30 L1440 60 L0 60 Z"
+              fill="currentColor"
+            />
           </svg>
         </div>
       </section>
@@ -171,7 +223,8 @@ export default function Home() {
                 data-testid={`stat-card-${i}`}
               >
                 <div className="font-serif font-bold text-3xl text-[#0f172a]">
-                  {s.num}<span className="text-[#b8860b]">{s.suffix}</span>
+                  {s.num}
+                  <span className="text-[#b8860b]">{s.suffix}</span>
                 </div>
                 <div className="text-gray-500 text-sm mt-1">{s.label}</div>
               </div>
@@ -181,17 +234,24 @@ export default function Home() {
       </section>
 
       {/* ─── MENGAPA WIDYA NUSANTARA ─── */}
-      <section className="py-20 bg-white relative overflow-hidden" data-testid="section-keunggulan">
+      <section
+        className="py-20 bg-white relative overflow-hidden"
+        data-testid="section-keunggulan"
+      >
         <div className="absolute inset-0 batik-pattern-bg opacity-30 pointer-events-none" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-14">
-            <p className="text-[#b8860b] font-semibold text-sm uppercase tracking-widest mb-2">Keunggulan Kami</p>
+            <p className="text-[#b8860b] font-semibold text-sm uppercase tracking-widest mb-2">
+              Keunggulan Kami
+            </p>
             <h2 className="font-serif text-3xl md:text-4xl font-bold text-[#0f172a]">
               Mengapa Memilih Widya Nusantara Academy?
             </h2>
             <BatikDivider />
             <p className="text-gray-600 max-w-2xl mx-auto text-base mt-4 leading-relaxed">
-              Kami bukan sekadar bimbingan belajar biasa. Kami adalah ekosistem pendukung yang mempersiapkan mental, strategi, dan akademik siswa secara holistik.
+              Kami bukan sekadar bimbingan belajar biasa. Kami wadah pendukung
+              yang mempersiapkan mental, strategi, dan akademik siswa secara
+              holistik.
             </p>
           </div>
 
@@ -205,8 +265,12 @@ export default function Home() {
                 <div className="w-14 h-14 rounded-xl bg-[#b8860b]/10 flex items-center justify-center mb-4 group-hover:bg-[#b8860b]/20 transition-colors">
                   {item.icon}
                 </div>
-                <h3 className="font-serif font-bold text-[#0f172a] text-lg mb-2">{item.title}</h3>
-                <p className="text-gray-500 text-sm leading-relaxed">{item.desc}</p>
+                <h3 className="font-serif font-bold text-[#0f172a] text-lg mb-2">
+                  {item.title}
+                </h3>
+                <p className="text-gray-500 text-sm leading-relaxed">
+                  {item.desc}
+                </p>
               </div>
             ))}
           </div>
@@ -214,12 +278,22 @@ export default function Home() {
       </section>
 
       {/* ─── PROGRAM UNGGULAN ─── */}
-      <section className="py-20 relative overflow-hidden" style={{ background: "linear-gradient(180deg, #f5f7fa 0%, #eef0f5 100%)" }} data-testid="section-program-preview">
+      <section
+        className="py-20 relative overflow-hidden"
+        style={{
+          background: "linear-gradient(180deg, #f5f7fa 0%, #eef0f5 100%)",
+        }}
+        data-testid="section-program-preview"
+      >
         <div className="absolute inset-0 batik-parang-bg opacity-30 pointer-events-none" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-14">
-            <p className="text-[#b8860b] font-semibold text-sm uppercase tracking-widest mb-2">Program Kami</p>
-            <h2 className="font-serif text-3xl md:text-4xl font-bold text-[#0f172a]">Program Unggulan</h2>
+            <p className="text-[#b8860b] font-semibold text-sm uppercase tracking-widest mb-2">
+              Program Kami
+            </p>
+            <h2 className="font-serif text-3xl md:text-4xl font-bold text-[#0f172a]">
+              Program Unggulan
+            </h2>
             <BatikDivider />
           </div>
 
@@ -230,14 +304,22 @@ export default function Home() {
                 className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100 hover:-translate-y-1 flex"
                 data-testid={`program-card-${i}`}
               >
-                <div className={`w-2 flex-shrink-0 bg-gradient-to-b ${p.color}`} />
+                <div
+                  className={`w-2 flex-shrink-0 bg-gradient-to-b ${p.color}`}
+                />
                 <div className="p-6 flex gap-4">
-                  <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${p.color} flex items-center justify-center text-white flex-shrink-0`}>
+                  <div
+                    className={`w-12 h-12 rounded-xl bg-gradient-to-br ${p.color} flex items-center justify-center text-white flex-shrink-0`}
+                  >
                     {p.icon}
                   </div>
                   <div>
-                    <h3 className="font-serif font-bold text-[#0f172a] text-lg mb-2">{p.title}</h3>
-                    <p className="text-gray-500 text-sm leading-relaxed">{p.desc}</p>
+                    <h3 className="font-serif font-bold text-[#0f172a] text-lg mb-2">
+                      {p.title}
+                    </h3>
+                    <p className="text-gray-500 text-sm leading-relaxed">
+                      {p.desc}
+                    </p>
                   </div>
                 </div>
               </div>
@@ -260,17 +342,24 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Left: Content */}
             <div>
-              <p className="text-[#b8860b] font-semibold text-sm uppercase tracking-widest mb-2">Yang Kamu Dapatkan</p>
+              <p className="text-[#b8860b] font-semibold text-sm uppercase tracking-widest mb-2">
+                Yang Kamu Dapatkan
+              </p>
               <h2 className="font-serif text-3xl md:text-4xl font-bold text-[#0f172a] mb-2">
                 Keuntungan Bergabung
               </h2>
               <BatikDivider color="#b8860b" />
               <p className="text-gray-600 text-base leading-relaxed mt-4 mb-6">
-                Dengan biaya yang sangat terjangkau, kamu mendapatkan akses ke ekosistem belajar yang komprehensif dan mendalam.
+                Dengan biaya yang sangat terjangkau, kamu mendapatkan akses ke
+                ekosistem belajar yang komprehensif dan mendalam.
               </p>
               <ul className="space-y-3">
                 {fasilitas.map((f, i) => (
-                  <li key={i} className="flex items-start gap-3" data-testid={`fasilitas-item-${i}`}>
+                  <li
+                    key={i}
+                    className="flex items-start gap-3"
+                    data-testid={`fasilitas-item-${i}`}
+                  >
                     <CheckCircle className="w-5 h-5 text-[#b8860b] mt-0.5 flex-shrink-0" />
                     <span className="text-gray-700 text-base">{f}</span>
                   </li>
@@ -288,12 +377,19 @@ export default function Home() {
 
                 <div className="relative">
                   <p className="text-[#94a3b8] text-sm mb-3">Biaya Bimbel</p>
-                  <div className="text-[#ffd700] font-serif font-bold text-5xl md:text-6xl mb-1">Rp160.000</div>
-                  <p className="text-[#b8860b] text-lg font-medium mb-6">untuk 5 Bulan Program</p>
+                  <div className="text-[#ffd700] font-serif font-bold text-5xl md:text-6xl mb-1">
+                    Rp160.000
+                  </div>
+                  <p className="text-[#b8860b] text-lg font-medium mb-6">
+                    untuk 5 Bulan Program
+                  </p>
 
                   <div className="space-y-2 mb-6">
                     {fasilitas.map((f, i) => (
-                      <div key={i} className="flex items-center gap-2 text-sm text-[#94a3b8]">
+                      <div
+                        key={i}
+                        className="flex items-center gap-2 text-sm text-[#94a3b8]"
+                      >
                         <CheckCircle className="w-4 h-4 text-[#b8860b] flex-shrink-0" />
                         {f}
                       </div>
@@ -302,7 +398,9 @@ export default function Home() {
 
                   <div className="bg-red-500/20 border border-red-400/30 rounded-xl p-3 mb-5 flex items-center gap-2">
                     <Clock className="w-4 h-4 text-red-400 flex-shrink-0" />
-                    <span className="text-red-300 text-sm">Kuota Terbatas — Hanya 100 Murid!</span>
+                    <span className="text-red-300 text-sm">
+                      Kuota Terbatas — Hanya 100 Murid!
+                    </span>
                   </div>
 
                   <Link href="/daftar" data-testid="price-card-cta">
@@ -318,26 +416,59 @@ export default function Home() {
       </section>
 
       {/* ─── NILAI UTAMA ─── */}
-      <section className="py-20 relative overflow-hidden" style={{ background: "linear-gradient(135deg, #0f172a 0%, #1a2a5e 100%)" }} data-testid="section-nilai">
+      <section
+        className="py-20 relative overflow-hidden"
+        style={{
+          background: "linear-gradient(135deg, #0f172a 0%, #1a2a5e 100%)",
+        }}
+        data-testid="section-nilai"
+      >
         <div className="absolute inset-0 batik-mega-mendung-bg opacity-30 pointer-events-none" />
         <div className="relative max-w-5xl mx-auto px-4 sm:px-6 text-center">
-          <p className="text-[#b8860b] font-semibold text-sm uppercase tracking-widest mb-2">Core Values</p>
-          <h2 className="font-serif text-3xl md:text-4xl font-bold text-white mb-3">Nilai Utama Kami</h2>
+          <p className="text-[#b8860b] font-semibold text-sm uppercase tracking-widest mb-2">
+            Core Values
+          </p>
+          <h2 className="font-serif text-3xl md:text-4xl font-bold text-white mb-3">
+            Nilai Utama Kami
+          </h2>
           <BatikDivider color="#b8860b" />
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
             {[
-              { title: "Keunggulan Akademik", icon: "🏆", desc: "Standar pengajaran tinggi dengan materi yang tajam dan relevan sesuai perkembangan sistem seleksi terbaru.", tag: "Excellence" },
-              { title: "Integritas", icon: "🤝", desc: "Mengedepankan proses belajar yang jujur, disiplin, dan bertanggung jawab demi hasil yang nyata dan terukur.", tag: "Integrity" },
-              { title: "Dampak Sosial", icon: "🌱", desc: "Setiap siswa yang mendaftar turut berkontribusi pada program sosial pendidikan Rubela Indonesia untuk pelajar kurang mampu.", tag: "Impact" },
+              {
+                title: "Keunggulan Akademik",
+                icon: "🏆",
+                desc: "Standar pengajaran tinggi dengan materi yang tajam dan relevan sesuai perkembangan sistem seleksi terbaru.",
+                tag: "Excellence",
+              },
+              {
+                title: "Integritas",
+                icon: "🤝",
+                desc: "Mengedepankan proses belajar yang jujur, disiplin, dan bertanggung jawab demi hasil yang nyata dan terukur.",
+                tag: "Integrity",
+              },
+              {
+                title: "Dampak Sosial",
+                icon: "🌱",
+                desc: "Setiap siswa yang mendaftar turut berkontribusi pada program sosial pendidikan Rubela Indonesia untuk pelajar kurang mampu.",
+                tag: "Impact",
+              },
             ].map((v, i) => (
-              <div key={i} className="bg-white/5 border border-white/10 rounded-2xl p-7 text-left hover:bg-white/10 transition-colors" data-testid={`nilai-card-${i}`}>
+              <div
+                key={i}
+                className="bg-white/5 border border-white/10 rounded-2xl p-7 text-left hover:bg-white/10 transition-colors"
+                data-testid={`nilai-card-${i}`}
+              >
                 <div className="text-3xl mb-4">{v.icon}</div>
                 <div className="inline-block px-3 py-1 bg-[#b8860b]/20 border border-[#b8860b]/30 rounded-full text-[#ffd700] text-xs font-medium mb-3">
                   {v.tag}
                 </div>
-                <h3 className="font-serif font-bold text-white text-xl mb-2">{v.title}</h3>
-                <p className="text-[#94a3b8] text-sm leading-relaxed">{v.desc}</p>
+                <h3 className="font-serif font-bold text-white text-xl mb-2">
+                  {v.title}
+                </h3>
+                <p className="text-[#94a3b8] text-sm leading-relaxed">
+                  {v.desc}
+                </p>
               </div>
             ))}
           </div>
@@ -353,7 +484,9 @@ export default function Home() {
             Siap Meraih PTN Impianmu?
           </h2>
           <p className="text-gray-600 text-lg mb-8 leading-relaxed">
-            Jangan tunda lagi! Bergabunglah dengan ratusan siswa yang sudah mempersiapkan diri bersama Widya Nusantara Academy. Kuota hanya 100 murid — segera amankan tempatmu!
+            Jangan tunda lagi! Bergabunglah dengan ratusan siswa yang sudah
+            mempersiapkan diri bersama Widya Nusantara Academy. Kuota hanya 100
+            murid — segera amankan tempatmu!
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link href="/daftar" data-testid="cta-daftar">
@@ -374,7 +507,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
     </div>
   );
 }
