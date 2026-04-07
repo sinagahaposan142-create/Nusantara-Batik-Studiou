@@ -46,7 +46,7 @@ const programList = [
   {
     icon: <BookOpen className="w-6 h-6" />,
     title: "Intensive UTBK Mastery",
-    desc: "Kelas reguler dan privat yang membedah tuntas materi TPS, Literasi Bahasa (Indonesia & Inggris), dan Penalaran Matematika.",
+    desc: "Kelas reguler yang membedah tuntas 7 Materi UTBK-SNBT.",
     color: "from-[#0f172a] to-[#1e3a5f]",
   },
   {
@@ -63,8 +63,8 @@ const programList = [
   },
   {
     icon: <Target className="w-6 h-6" />,
-    title: "Bootcamp Karantina",
-    desc: "Program belajar intensif menjelang hari-H ujian dengan pendampingan 24 jam, fasilitas penginapan, asupan gizi yang terjaga.",
+    title: "Asinkronus LMS",
+    desc: "Program latihan soal intensif menggunakan LMS untuk meningkatkan kecepatan dan ketepatan dalam mengerjakan soal UTBK.",
     color: "from-[#4c1d95] to-[#5b21b6]",
   },
 ];
@@ -350,8 +350,8 @@ export default function Home() {
               </h2>
               <BatikDivider color="#b8860b" />
               <p className="text-gray-600 text-base leading-relaxed mt-4 mb-6">
-                Dengan biaya yang sangat terjangkau, kamu mendapatkan akses ke
-                ekosistem belajar yang komprehensif dan mendalam.
+                Dengan biaya yang sangat terjangkau, kamu mendapatkan banyak
+                keuntungan, yaitu:.
               </p>
               <ul className="space-y-3">
                 {fasilitas.map((f, i) => (
@@ -486,7 +486,7 @@ export default function Home() {
           <p className="text-gray-600 text-lg mb-8 leading-relaxed">
             Jangan tunda lagi! Bergabunglah dengan ratusan siswa yang sudah
             mempersiapkan diri bersama Widya Nusantara Academy. Kuota hanya 100
-            murid — segera amankan tempatmu!
+            murid!
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link href="/daftar" data-testid="cta-daftar">
@@ -496,7 +496,7 @@ export default function Home() {
               </span>
             </Link>
             <a
-              href="https://wa.me/6289536039675"
+              href="https://wa.me/62895360396759"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 px-8 py-4 border-2 border-[#b8860b] text-[#b8860b] font-semibold text-lg rounded-xl hover:bg-[#b8860b]/10 transition-all duration-300"
