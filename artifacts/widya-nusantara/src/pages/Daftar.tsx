@@ -1,13 +1,16 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { CheckCircle, Upload, CreditCard, Copy, AlertCircle, Phone, Mail } from "lucide-react";
+import { CheckCircle, Upload, CreditCard, Copy, AlertCircle, Phone, Mail, Loader2, X, Image } from "lucide-react";
 import { BatikDivider, BatikCornerDecor, BatikFlower } from "../components/BatikOrnament";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+
+const MAX_FILE_SIZE = 10 * 1024 * 1024;
+const ACCEPTED_IMAGE_TYPES = ["image/jpeg", "image/png", "image/webp", "image/jpg"];
 
 const formSchema = z.object({
   namaLengkap: z.string().min(2, "Nama lengkap minimal 2 karakter"),
@@ -35,9 +38,17 @@ const benefits = [
   "Simulasi Try Out sebanyak 6x",
 ];
 
+const API_BASE = import.meta.env.BASE_URL.replace(/\/$/, "");
+
 export default function Daftar() {
   const [submitted, setSubmitted] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [filePreview, setFilePreview] = useState<string | null>(null);
+  const [fileError, setFileError] = useState<string | null>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
@@ -52,13 +63,80 @@ export default function Daftar() {
     },
   });
 
-  const onSubmit = (data: FormValues) => {
-    console.log("Form submitted:", data);
-    const waMessage = encodeURIComponent(
-      `Halo Tim Widya Nusantara Academy!\n\nSaya ingin mendaftar dengan data berikut:\n\nNama Lengkap: ${data.namaLengkap}\nAsal Sekolah: ${data.asalSekolah}\nTanggal Lahir: ${data.tanggalLahir}\nStatus: ${statusOptions.find(o => o.value === data.statusPendidikan)?.label}\nNo. WA: ${data.nomorWhatsApp}\nInstagram: @${data.usernameInstagram}\nEmail: ${data.gmail}\n\nSaya telah melakukan pembayaran dan akan segera mengirimkan buktinya. Terima kasih!`
-    );
-    window.open(`https://wa.me/6289536039675?text=${waMessage}`, "_blank");
-    setSubmitted(true);
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    setFileError(null);
+
+    if (!file) {
+      setSelectedFile(null);
+      setFilePreview(null);
+      return;
+    }
+
+    if (!ACCEPTED_IMAGE_TYPES.includes(file.type)) {
+      setFileError("Format file harus JPG, PNG, atau WebP");
+      setSelectedFile(null);
+      setFilePreview(null);
+      return;
+    }
+
+    if (file.size > MAX_FILE_SIZE) {
+      setFileError("Ukuran file maksimal 10MB");
+      setSelectedFile(null);
+      setFilePreview(null);
+      return;
+    }
+
+    setSelectedFile(file);
+    const reader = new FileReader();
+    reader.onload = () => setFilePreview(reader.result as string);
+    reader.readAsDataURL(file);
+  };
+
+  const removeFile = () => {
+    setSelectedFile(null);
+    setFilePreview(null);
+    setFileError(null);
+    if (fileInputRef.current) {
+      fileInputRef.current.value = "";
+    }
+  };
+
+  const onSubmit = async (data: FormValues) => {
+    setIsSubmitting(true);
+    setSubmitError(null);
+
+    try {
+      const formData = new FormData();
+      formData.append("namaLengkap", data.namaLengkap);
+      formData.append("asalSekolah", data.asalSekolah);
+      formData.append("tanggalLahir", data.tanggalLahir);
+      formData.append("statusPendidikan", data.statusPendidikan);
+      formData.append("nomorWhatsApp", data.nomorWhatsApp);
+      formData.append("usernameInstagram", data.usernameInstagram);
+      formData.append("gmail", data.gmail);
+
+      if (selectedFile) {
+        formData.append("buktiPembayaran", selectedFile);
+      }
+
+      const response = await fetch(`${API_BASE}/api/registration`, {
+        method: "POST",
+        body: formData,
+      });
+
+      const result = await response.json();
+
+      if (!response.ok || !result.success) {
+        throw new Error(result.message || "Pendaftaran gagal");
+      }
+
+      setSubmitted(true);
+    } catch (err: any) {
+      setSubmitError(err.message || "Terjadi kesalahan. Silakan coba lagi.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const copyRekening = () => {
@@ -70,7 +148,6 @@ export default function Daftar() {
   return (
     <div className="min-h-screen" data-testid="page-daftar">
 
-      {/* ─── PAGE HEADER ─── */}
       <section className="relative overflow-hidden py-16 md:py-24" style={{ background: "linear-gradient(135deg, #065f46 0%, #064e3b 40%, #065f46 100%)" }}>
         <div className="absolute inset-0 batik-kawung-bg opacity-20 pointer-events-none" />
         <BatikCornerDecor className="absolute top-4 left-4 opacity-30" />
@@ -98,14 +175,11 @@ export default function Daftar() {
         </div>
       </section>
 
-      {/* ─── MAIN CONTENT ─── */}
       <section className="py-16 bg-white" data-testid="section-form">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
 
-            {/* Left: Info sidebar */}
             <div className="lg:col-span-1 space-y-6">
-              {/* Price card */}
               <div className="bg-gradient-to-br from-[#0f172a] to-[#1e3a5f] rounded-2xl p-6 text-white relative overflow-hidden" data-testid="price-info-card">
                 <div className="absolute inset-0 batik-kawung-bg opacity-15 pointer-events-none" />
                 <BatikCornerDecor className="absolute top-3 right-3 opacity-20" />
@@ -125,7 +199,6 @@ export default function Daftar() {
                 </div>
               </div>
 
-              {/* Rekening info */}
               <div className="bg-[#f5f7fa] rounded-2xl p-6 border border-[#b8860b]/15" data-testid="payment-info-card">
                 <h4 className="font-serif font-bold text-[#0f172a] text-lg mb-4 flex items-center gap-2">
                   <CreditCard className="w-5 h-5 text-[#b8860b]" />
@@ -164,7 +237,6 @@ export default function Daftar() {
                 </div>
               </div>
 
-              {/* Contact */}
               <div className="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm">
                 <h4 className="font-serif font-bold text-[#0f172a] text-base mb-3">Butuh Bantuan?</h4>
                 <div className="space-y-3">
@@ -180,22 +252,32 @@ export default function Daftar() {
               </div>
             </div>
 
-            {/* Right: Form */}
             <div className="lg:col-span-2">
               {submitted ? (
                 <div className="bg-green-50 border border-green-200 rounded-3xl p-12 text-center" data-testid="success-message">
                   <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-5">
                     <CheckCircle className="w-10 h-10 text-green-600" />
                   </div>
-                  <h2 className="font-serif text-2xl font-bold text-green-800 mb-3">Terima Kasih!</h2>
-                  <p className="text-green-700 text-base leading-relaxed mb-6">
-                    Data kamu sudah kami kirimkan via WhatsApp. Tim Rubela UTBK Indonesia akan segera menindaklanjuti pendaftaranmu. Jangan lupa kirimkan bukti pembayaran!
+                  <h2 className="font-serif text-2xl font-bold text-green-800 mb-3">Pendaftaran Berhasil!</h2>
+                  <p className="text-green-700 text-base leading-relaxed mb-4">
+                    Data pendaftaran kamu telah berhasil dikirim. Tim Widya Nusantara Academy akan segera memproses data kamu.
                   </p>
+                  <div className="bg-green-100 border border-green-300 rounded-xl p-4 mb-6 max-w-md mx-auto">
+                    <p className="text-green-800 font-semibold text-sm mb-1">Email Konfirmasi Terkirim</p>
+                    <p className="text-green-700 text-xs">
+                      Silakan cek email kamu untuk melihat konfirmasi pendaftaran beserta invoice pembayaran.
+                    </p>
+                  </div>
                   <p className="text-green-600 text-sm">
-                    Periksa WhatsApp kamu untuk konfirmasi lebih lanjut dari tim kami.
+                    Kami akan menghubungi kamu melalui WhatsApp dalam 1-2 hari kerja.
                   </p>
                   <button
-                    onClick={() => setSubmitted(false)}
+                    onClick={() => {
+                      setSubmitted(false);
+                      setSelectedFile(null);
+                      setFilePreview(null);
+                      form.reset();
+                    }}
                     className="mt-6 px-6 py-2.5 border border-green-400 text-green-700 rounded-xl hover:bg-green-100 transition-colors text-sm font-medium"
                     data-testid="button-daftar-lagi"
                   >
@@ -326,35 +408,96 @@ export default function Daftar() {
                         />
                       </div>
 
-                      {/* Bukti Pembayaran info */}
                       <div className="bg-[#f5f7fa] rounded-xl p-4 border border-[#b8860b]/15">
-                        <div className="flex items-center gap-2 mb-2">
+                        <div className="flex items-center gap-2 mb-3">
                           <Upload className="w-4 h-4 text-[#b8860b]" />
-                          <p className="font-semibold text-[#0f172a] text-sm">Upload Bukti Pembayaran</p>
+                          <p className="font-semibold text-[#0f172a] text-sm">Upload Bukti Pembayaran <span className="text-red-500">*</span></p>
                         </div>
-                        <p className="text-gray-500 text-xs leading-relaxed">
-                          Setelah mengisi formulir, kamu akan diarahkan ke WhatsApp untuk melengkapi pendaftaran dan mengirimkan bukti pembayaran dalam format JPG/PNG ke tim kami.
+                        <p className="text-gray-500 text-xs leading-relaxed mb-3">
+                          Upload screenshot atau foto bukti transfer pembayaran kamu (format JPG/PNG, maks 10MB).
                         </p>
+
+                        {filePreview ? (
+                          <div className="relative">
+                            <div className="relative rounded-lg overflow-hidden border border-gray-200 bg-white">
+                              <img
+                                src={filePreview}
+                                alt="Preview bukti pembayaran"
+                                className="w-full max-h-48 object-contain"
+                              />
+                              <button
+                                type="button"
+                                onClick={removeFile}
+                                className="absolute top-2 right-2 p-1.5 bg-red-500 text-white rounded-full hover:bg-red-600 transition-colors shadow-md"
+                              >
+                                <X className="w-3.5 h-3.5" />
+                              </button>
+                            </div>
+                            <p className="text-xs text-gray-500 mt-2 flex items-center gap-1">
+                              <Image className="w-3 h-3" />
+                              {selectedFile?.name} ({(selectedFile!.size / 1024).toFixed(0)} KB)
+                            </p>
+                          </div>
+                        ) : (
+                          <label className="block cursor-pointer">
+                            <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-[#b8860b] hover:bg-[#b8860b]/5 transition-all">
+                              <Upload className="w-8 h-8 text-gray-400 mx-auto mb-2" />
+                              <p className="text-sm text-gray-600 font-medium">Klik untuk upload bukti pembayaran</p>
+                              <p className="text-xs text-gray-400 mt-1">JPG, PNG, atau WebP (maks 10MB)</p>
+                            </div>
+                            <input
+                              ref={fileInputRef}
+                              type="file"
+                              accept="image/jpeg,image/png,image/webp,image/jpg"
+                              onChange={handleFileChange}
+                              className="hidden"
+                              data-testid="input-bukti-pembayaran"
+                            />
+                          </label>
+                        )}
+
+                        {fileError && (
+                          <p className="text-red-500 text-xs mt-2 flex items-center gap-1">
+                            <AlertCircle className="w-3 h-3" />
+                            {fileError}
+                          </p>
+                        )}
                       </div>
 
-                      {/* Terms note */}
                       <div className="bg-blue-50 border border-blue-200 rounded-xl p-4">
                         <p className="text-blue-700 text-xs leading-relaxed">
                           Dengan mendaftar, kamu menyetujui syarat dan ketentuan Widya Nusantara Academy. Data kamu akan digunakan untuk keperluan administrasi pendaftaran saja.
                         </p>
                       </div>
 
+                      {submitError && (
+                        <div className="bg-red-50 border border-red-200 rounded-xl p-4 flex items-start gap-3">
+                          <AlertCircle className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" />
+                          <div>
+                            <p className="text-red-700 font-semibold text-sm">Pendaftaran Gagal</p>
+                            <p className="text-red-600 text-xs mt-1">{submitError}</p>
+                          </div>
+                        </div>
+                      )}
+
                       <Button
                         type="submit"
-                        disabled={form.formState.isSubmitting}
-                        className="w-full h-12 bg-[#b8860b] hover:bg-[#8b6508] text-white font-bold text-base rounded-xl shadow-md hover:shadow-lg transition-all duration-200"
+                        disabled={isSubmitting}
+                        className="w-full h-12 bg-[#b8860b] hover:bg-[#8b6508] text-white font-bold text-base rounded-xl shadow-md hover:shadow-lg transition-all duration-200 disabled:opacity-60"
                         data-testid="button-submit-form"
                       >
-                        {form.formState.isSubmitting ? "Memproses..." : "Kirim Pendaftaran via WhatsApp"}
+                        {isSubmitting ? (
+                          <span className="flex items-center gap-2">
+                            <Loader2 className="w-5 h-5 animate-spin" />
+                            Memproses Pendaftaran...
+                          </span>
+                        ) : (
+                          "Kirim Pendaftaran"
+                        )}
                       </Button>
 
                       <p className="text-center text-gray-400 text-xs">
-                        Kamu akan diarahkan ke WhatsApp untuk melengkapi proses pendaftaran
+                        Data kamu akan tersimpan dan email konfirmasi akan dikirim otomatis
                       </p>
                     </form>
                   </Form>
@@ -365,11 +508,10 @@ export default function Daftar() {
         </div>
       </section>
 
-      {/* ─── THANK YOU NOTE ─── */}
       <section className="py-12 bg-[#f5f7fa] text-center" data-testid="section-thankyou">
         <div className="max-w-2xl mx-auto px-4 sm:px-6">
           <p className="text-gray-500 text-sm leading-relaxed">
-            Terima kasih, data kamu akan segera ditindaklanjuti oleh <strong className="text-[#0f172a]">Tim Rubela UTBK Indonesia</strong>. Jangan lupa kunjungi website kami di{" "}
+            Terima kasih, data kamu akan segera ditindaklanjuti oleh <strong className="text-[#0f172a]">Tim Widya Nusantara Academy</strong>. Jangan lupa kunjungi website kami di{" "}
             <a href="https://www.widyautbk.site" target="_blank" rel="noopener noreferrer" className="text-[#b8860b] font-semibold hover:underline">
               www.widyautbk.site
             </a>{" "}

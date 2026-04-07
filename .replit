@@ -18,7 +18,6 @@ modules = ["nodejs-24"]
   env = { "CI" = "true" }
 
   [workflows]
-  runButton = "Project"
 
   [agent]
   stack = "PNPM_WORKSPACE"
