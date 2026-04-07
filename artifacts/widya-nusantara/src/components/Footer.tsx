@@ -1,6 +1,5 @@
 import { Link } from "wouter";
 import { Phone, Mail, Globe, Instagram, MessageCircle } from "lucide-react";
-import { BatikFlower } from "./BatikOrnament";
 
 export default function Footer() {
   return (
@@ -21,9 +20,13 @@ export default function Footer() {
           {/* Brand */}
           <div className="lg:col-span-2">
             <div className="flex items-center gap-3 mb-4">
-              <BatikFlower size={36} color="#b8860b" />
+              <img
+                src="/logo.png"
+                alt="Widya Nusantara Academy"
+                className="h-20 w-auto object-contain"
+                style={{ filter: "drop-shadow(0 0 8px rgba(184,134,11,0.4))" }}
+              />
               <div>
-                <div className="font-serif font-bold text-xl text-white leading-tight">Widya Nusantara Academy</div>
                 <div className="text-[#b8860b] text-xs font-medium tracking-widest uppercase">Under Rubela Indonesia</div>
               </div>
             </div>

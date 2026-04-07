@@ -57,26 +57,12 @@ export default function Navbar() {
           <div className="flex items-center justify-between h-16 md:h-20">
             {/* Logo */}
             <Link href="/" data-testid="link-logo">
-              <div className="flex items-center gap-3 cursor-pointer group">
-                <div className="relative">
-                  <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-br from-[#0f172a] to-[#1e3a5f] flex items-center justify-center shadow-md group-hover:shadow-lg transition-shadow">
-                    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M14 4 L20 10 L20 20 L14 24 L8 20 L8 10 Z" fill="none" stroke="#ffd700" strokeWidth="1.5"/>
-                      <path d="M14 8 L17 11 L17 18 L14 21 L11 18 L11 11 Z" fill="#ffd700" opacity="0.3"/>
-                      <circle cx="14" cy="14" r="3" fill="#ffd700" opacity="0.8"/>
-                      <path d="M14 4 L14 24 M8 10 L20 20 M8 20 L20 10" stroke="#ffd700" strokeWidth="0.5" opacity="0.4"/>
-                    </svg>
-                  </div>
-                  <div className="absolute -top-0.5 -right-0.5 w-3 h-3 bg-[#b8860b] rounded-full border-2 border-white"></div>
-                </div>
-                <div>
-                  <div className="font-serif font-bold text-[#0f172a] text-base md:text-lg leading-tight tracking-wide">
-                    Widya Nusantara
-                  </div>
-                  <div className="text-[#b8860b] text-[10px] md:text-xs font-medium tracking-widest uppercase">
-                    Academy
-                  </div>
-                </div>
+              <div className="flex items-center cursor-pointer group">
+                <img
+                  src="/logo.png"
+                  alt="Widya Nusantara Academy"
+                  className="h-12 md:h-16 w-auto object-contain transition-transform duration-200 group-hover:scale-105"
+                />
               </div>
             </Link>
 
