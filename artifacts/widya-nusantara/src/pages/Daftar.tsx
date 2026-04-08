@@ -42,6 +42,7 @@ const API_BASE = import.meta.env.BASE_URL.replace(/\/$/, "");
 
 export default function Daftar() {
   const [submitted, setSubmitted] = useState(false);
+  const [emailSent, setEmailSent] = useState(false);
   const [copied, setCopied] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
@@ -131,6 +132,7 @@ export default function Daftar() {
         throw new Error(result.message || "Pendaftaran gagal");
       }
 
+      setEmailSent(result.emailSent === true);
       setSubmitted(true);
     } catch (err: any) {
       setSubmitError(err.message || "Terjadi kesalahan. Silakan coba lagi.");
@@ -262,18 +264,28 @@ export default function Daftar() {
                   <p className="text-green-700 text-base leading-relaxed mb-4">
                     Data pendaftaran kamu telah berhasil dikirim. Tim Widya Nusantara Academy akan segera memproses data kamu.
                   </p>
-                  <div className="bg-green-100 border border-green-300 rounded-xl p-4 mb-6 max-w-md mx-auto">
-                    <p className="text-green-800 font-semibold text-sm mb-1">Email Konfirmasi Terkirim</p>
-                    <p className="text-green-700 text-xs">
-                      Silakan cek email kamu untuk melihat konfirmasi pendaftaran beserta invoice pembayaran.
-                    </p>
-                  </div>
+                  {emailSent ? (
+                    <div className="bg-green-100 border border-green-300 rounded-xl p-4 mb-6 max-w-md mx-auto">
+                      <p className="text-green-800 font-semibold text-sm mb-1">Email Konfirmasi Terkirim</p>
+                      <p className="text-green-700 text-xs">
+                        Silakan cek email kamu untuk melihat konfirmasi pendaftaran beserta invoice pembayaran.
+                      </p>
+                    </div>
+                  ) : (
+                    <div className="bg-yellow-50 border border-yellow-300 rounded-xl p-4 mb-6 max-w-md mx-auto">
+                      <p className="text-yellow-800 font-semibold text-sm mb-1">Email Konfirmasi Gagal Terkirim</p>
+                      <p className="text-yellow-700 text-xs">
+                        Data pendaftaranmu sudah tersimpan, tapi email konfirmasi gagal dikirim. Silakan hubungi admin melalui WhatsApp.
+                      </p>
+                    </div>
+                  )}
                   <p className="text-green-600 text-sm">
                     Kami akan menghubungi kamu melalui WhatsApp dalam 1-2 hari kerja.
                   </p>
                   <button
                     onClick={() => {
                       setSubmitted(false);
+                      setEmailSent(false);
                       setSelectedFile(null);
                       setFilePreview(null);
                       form.reset();

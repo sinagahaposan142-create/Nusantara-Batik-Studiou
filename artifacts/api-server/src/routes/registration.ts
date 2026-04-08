@@ -86,6 +86,7 @@ router.post("/registration", upload.single("buktiPembayaran"), async (req, res) 
       timeZone: "Asia/Jakarta",
     });
 
+    let emailSent = false;
     try {
       await sendRegistrationEmail({
         toEmail: data.gmail,
@@ -96,13 +97,17 @@ router.post("/registration", upload.single("buktiPembayaran"), async (req, res) 
         nomorWhatsApp: data.nomorWhatsApp,
         registrationDate,
       });
+      emailSent = true;
     } catch (emailErr) {
       logger.error({ err: emailErr }, "Failed to send confirmation email");
     }
 
     res.json({
       success: true,
-      message: "Pendaftaran berhasil! Email konfirmasi telah dikirim.",
+      emailSent,
+      message: emailSent
+        ? "Pendaftaran berhasil! Email konfirmasi telah dikirim."
+        : "Pendaftaran berhasil! Namun email konfirmasi gagal dikirim. Silakan hubungi admin.",
     });
   } catch (err) {
     logger.error({ err }, "Registration failed");

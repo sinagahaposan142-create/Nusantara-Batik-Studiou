@@ -64,8 +64,7 @@ export async function sendRegistrationEmail(data: {
 }) {
   const gmail = await getUncachableGmailClient();
 
-  const profileRes = await gmail.users.getProfile({ userId: "me" });
-  const senderEmail = profileRes.data.emailAddress || "widyaakademi@gmail.com";
+  const senderEmail = "widyaakademi@gmail.com";
 
   const invoiceNumber = `WNA-${Date.now().toString(36).toUpperCase()}`;
 
