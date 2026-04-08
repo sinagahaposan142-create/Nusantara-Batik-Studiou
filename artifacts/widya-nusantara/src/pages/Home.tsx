@@ -124,7 +124,7 @@ export default function Home() {
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#b8860b]/20 border border-[#b8860b]/40 rounded-full mb-6 animate-float-up">
             <span className="w-2 h-2 bg-[#ffd700] rounded-full pulse-gold"></span>
             <span className="text-[#ffd700] text-sm font-medium">
-              Bimbel UTBK Eksklusif di bawah Rubela Indonesia
+              Bimbel UTBK Eksklusif di bawah Rubela UTBK Indonesia
             </span>
           </div>
 

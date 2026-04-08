@@ -379,7 +379,8 @@ export default function Program() {
                       Target Peserta
                     </p>
                     <p className="text-gray-500 text-sm">
-                      Kelas 12, Gap Year, Semi Gap Year 2025-2026
+                      Kelas 12/Kelas 11 yang akan naik ke kelas 12 tahun ini,
+                      Gap Year, Semi Gap Year 2025-2026
                     </p>
                   </div>
                 </div>

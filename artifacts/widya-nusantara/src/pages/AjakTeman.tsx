@@ -1,20 +1,35 @@
 import { Link } from "wouter";
-import { ChevronRight, Gift, Users, DollarSign, AlertCircle, Share2, UserPlus, CreditCard, Banknote, Phone } from "lucide-react";
-import { BatikDivider, BatikCornerDecor, BatikFlower } from "../components/BatikOrnament";
+import {
+  ChevronRight,
+  Gift,
+  Users,
+  DollarSign,
+  AlertCircle,
+  Share2,
+  UserPlus,
+  CreditCard,
+  Banknote,
+  Phone,
+} from "lucide-react";
+import {
+  BatikDivider,
+  BatikCornerDecor,
+  BatikFlower,
+} from "../components/BatikOrnament";
 
 const steps = [
   {
     step: "01",
     icon: <Share2 className="w-6 h-6" />,
     title: "Bagikan Informasi",
-    desc: "Sebarkan info Widya Nusantara Academy kepada teman-temanmu yang masih kelas 12 atau gap year melalui WhatsApp, Instagram, atau media sosial lainnya.",
+    desc: "Sebarkan info Bimbel Widya Nusantara kepada teman-temanmu yang masih kelas 12/yang akan naik ke kelas 12 tahun ini atau gap year,ds. Melalui WhatsApp, Instagram, atau media sosial lainnya.",
     color: "bg-[#1e3a5f]",
   },
   {
     step: "02",
     icon: <UserPlus className="w-6 h-6" />,
     title: "Ajak Teman Mendaftar",
-    desc: "Pastikan temanmu mendaftar di Widya Nusantara Academy. Mereka bisa mendaftar melalui website www.widyautbk.site atau menghubungi kami langsung.",
+    desc: "Pastikan temanmu mendaftar di web Widya Nusantara. Mereka bisa mendaftar melalui website www.widyautbk.site atau menghubungi kami langsung.",
     color: "bg-[#b8860b]",
   },
   {
@@ -28,7 +43,7 @@ const steps = [
     step: "04",
     icon: <Banknote className="w-6 h-6" />,
     title: "Dapatkan Hadiahmu!",
-    desc: "Setelah pembayaran temanmu terkonfirmasi, kamu langsung mendapatkan hadiah Rp10.000 tunai yang akan segera dikirimkan kepada kamu!",
+    desc: "Setelah pembayaran temanmu terkonfirmasi. Kirim Bukti Pendaftaran yang Kamu Ajak ke nomor WhatsApp 0895360396759. Jelaskan Berapa orang yang kamu ajak dan Kami akan mengecek kesesuaian data.",
     color: "bg-[#5b21b6]",
   },
 ];
@@ -51,7 +66,7 @@ const faqs = [
   },
   {
     q: "Kapan hadiah akan dikirimkan?",
-    a: "Hadiah akan langsung dikirimkan setelah pembayaran temanmu terkonfirmasi oleh tim Widya Nusantara Academy.",
+    a: "Hadiah akan langsung dikirimkan setelah pembayaran temanmu terkonfirmasi dan kamu mengirimkan bukti pendaftaran melalui nomor WhatsApp Widya Nusantara",
   },
   {
     q: "Bagaimana cara kerja konfirmasi pembayaran teman?",
@@ -66,9 +81,14 @@ const faqs = [
 export default function AjakTeman() {
   return (
     <div className="min-h-screen" data-testid="page-ajak-teman">
-
       {/* ─── PAGE HEADER ─── */}
-      <section className="relative overflow-hidden py-16 md:py-24" style={{ background: "linear-gradient(135deg, #4c1d95 0%, #5b21b6 40%, #7c3aed 70%, #5b21b6 100%)" }}>
+      <section
+        className="relative overflow-hidden py-16 md:py-24"
+        style={{
+          background:
+            "linear-gradient(135deg, #4c1d95 0%, #5b21b6 40%, #7c3aed 70%, #5b21b6 100%)",
+        }}
+      >
         <div className="absolute inset-0 batik-kawung-bg opacity-20 pointer-events-none" />
         <BatikCornerDecor className="absolute top-4 left-4 opacity-30" />
         <div className="absolute top-4 right-4 opacity-30 rotate-90">
@@ -78,20 +98,32 @@ export default function AjakTeman() {
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 text-center">
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 border border-white/20 rounded-full mb-6">
             <Gift className="w-4 h-4 text-yellow-300" />
-            <span className="text-yellow-200 text-sm font-medium">Program Referral Eksklusif</span>
+            <span className="text-yellow-200 text-sm font-medium">
+              Program Referral Eksklusif
+            </span>
           </div>
           <h1 className="font-serif text-4xl md:text-5xl font-bold text-white mb-4">
             Ajak Teman, Dapat Cuan!
           </h1>
           <BatikDivider color="#ffd700" />
           <p className="text-purple-200 text-lg mt-4 leading-relaxed max-w-2xl mx-auto">
-            Yuk ikuti program spesial dari kami! Kamu berkesempatan untuk mendapatkan hadiah eksklusif Rp10.000 tunai yang akan langsung dikirimkan kepadamu untuk setiap teman yang berhasil mendaftar.
+            Yuk ikuti program spesial dari kami! Kamu berkesempatan untuk
+            mendapatkan hadiah eksklusif Rp10.000 tunai yang akan langsung
+            dikirimkan kepadamu untuk setiap teman yang berhasil mendaftar.
           </p>
         </div>
 
         <div className="text-white mt-8">
-          <svg viewBox="0 0 1440 40" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full">
-            <path d="M0 20 C360 40 720 0 1080 20 C1260 30 1350 10 1440 20 L1440 40 L0 40 Z" fill="currentColor"/>
+          <svg
+            viewBox="0 0 1440 40"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className="w-full"
+          >
+            <path
+              d="M0 20 C360 40 720 0 1080 20 C1260 30 1350 10 1440 20 L1440 40 L0 40 Z"
+              fill="currentColor"
+            />
           </svg>
         </div>
       </section>
@@ -100,58 +132,102 @@ export default function AjakTeman() {
       <section className="py-16 bg-white" data-testid="section-reward">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
-            <div className="p-6 bg-[#f5f7fa] rounded-2xl border border-gray-100" data-testid="reward-stat-1">
+            <div
+              className="p-6 bg-[#f5f7fa] rounded-2xl border border-gray-100"
+              data-testid="reward-stat-1"
+            >
               <div className="w-14 h-14 bg-[#b8860b]/10 rounded-full flex items-center justify-center mx-auto mb-3">
                 <DollarSign className="w-7 h-7 text-[#b8860b]" />
               </div>
-              <div className="font-serif font-bold text-3xl text-[#0f172a]">Rp10.000</div>
-              <p className="text-gray-500 text-sm mt-1">Per 1 Referral Berhasil</p>
+              <div className="font-serif font-bold text-3xl text-[#0f172a]">
+                Rp10.000
+              </div>
+              <p className="text-gray-500 text-sm mt-1">
+                Per 1 Referral Berhasil
+              </p>
             </div>
-            <div className="p-6 bg-[#f5f7fa] rounded-2xl border border-gray-100" data-testid="reward-stat-2">
+            <div
+              className="p-6 bg-[#f5f7fa] rounded-2xl border border-gray-100"
+              data-testid="reward-stat-2"
+            >
               <div className="w-14 h-14 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-3">
                 <Users className="w-7 h-7 text-purple-600" />
               </div>
-              <div className="font-serif font-bold text-3xl text-[#0f172a]">Tanpa Batas</div>
-              <p className="text-gray-500 text-sm mt-1">Jumlah Referral yang Bisa Diajukan</p>
+              <div className="font-serif font-bold text-3xl text-[#0f172a]">
+                Tanpa Batas
+              </div>
+              <p className="text-gray-500 text-sm mt-1">
+                Jumlah Referral yang Bisa Diajukan
+              </p>
             </div>
-            <div className="p-6 bg-[#f5f7fa] rounded-2xl border border-gray-100" data-testid="reward-stat-3">
+            <div
+              className="p-6 bg-[#f5f7fa] rounded-2xl border border-gray-100"
+              data-testid="reward-stat-3"
+            >
               <div className="w-14 h-14 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3">
                 <Banknote className="w-7 h-7 text-green-600" />
               </div>
-              <div className="font-serif font-bold text-3xl text-[#0f172a]">Tunai</div>
-              <p className="text-gray-500 text-sm mt-1">Langsung Dikirimkan ke Kamu</p>
+              <div className="font-serif font-bold text-3xl text-[#0f172a]">
+                Tunai
+              </div>
+              <p className="text-gray-500 text-sm mt-1">
+                Kirim Bukti ke nomor WhatsApp 0895360396759
+              </p>
             </div>
           </div>
         </div>
       </section>
 
       {/* ─── HOW IT WORKS ─── */}
-      <section className="py-20 relative overflow-hidden" style={{ background: "linear-gradient(180deg, #f5f7fa 0%, #eef0f5 100%)" }} data-testid="section-cara-kerja">
+      <section
+        className="py-20 relative overflow-hidden"
+        style={{
+          background: "linear-gradient(180deg, #f5f7fa 0%, #eef0f5 100%)",
+        }}
+        data-testid="section-cara-kerja"
+      >
         <div className="absolute inset-0 batik-parang-bg opacity-20 pointer-events-none" />
         <div className="relative max-w-5xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-14">
-            <p className="text-[#b8860b] font-semibold text-sm uppercase tracking-widest mb-2">Cara Kerja</p>
-            <h2 className="font-serif text-3xl md:text-4xl font-bold text-[#0f172a]">Bagaimana Caranya?</h2>
+            <p className="text-[#b8860b] font-semibold text-sm uppercase tracking-widest mb-2">
+              Cara Kerja
+            </p>
+            <h2 className="font-serif text-3xl md:text-4xl font-bold text-[#0f172a]">
+              Bagaimana Caranya?
+            </h2>
             <BatikDivider />
             <p className="text-gray-500 max-w-xl mx-auto text-base mt-4">
-              Super mudah! Ikuti 4 langkah sederhana ini dan mulai dapatkan penghasilan tambahan.
+              Super mudah! Ikuti 4 langkah sederhana ini dan mulai dapatkan
+              penghasilan tambahan.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {steps.map((s, i) => (
-              <div key={i} className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow flex gap-5" data-testid={`step-card-${i}`}>
+              <div
+                key={i}
+                className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow flex gap-5"
+                data-testid={`step-card-${i}`}
+              >
                 <div className="flex-shrink-0">
-                  <div className={`w-12 h-12 ${s.color} rounded-xl flex items-center justify-center text-white`}>
+                  <div
+                    className={`w-12 h-12 ${s.color} rounded-xl flex items-center justify-center text-white`}
+                  >
                     {s.icon}
                   </div>
                 </div>
                 <div>
                   <div className="flex items-center gap-2 mb-1">
-                    <span className="text-[#b8860b] font-bold text-xs">LANGKAH {s.step}</span>
+                    <span className="text-[#b8860b] font-bold text-xs">
+                      LANGKAH {s.step}
+                    </span>
                   </div>
-                  <h3 className="font-serif font-bold text-[#0f172a] text-lg mb-2">{s.title}</h3>
-                  <p className="text-gray-500 text-sm leading-relaxed">{s.desc}</p>
+                  <h3 className="font-serif font-bold text-[#0f172a] text-lg mb-2">
+                    {s.title}
+                  </h3>
+                  <p className="text-gray-500 text-sm leading-relaxed">
+                    {s.desc}
+                  </p>
                 </div>
               </div>
             ))}
@@ -163,14 +239,22 @@ export default function AjakTeman() {
       <section className="py-20 bg-white" data-testid="section-syarat">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-14">
-            <p className="text-[#b8860b] font-semibold text-sm uppercase tracking-widest mb-2">Aturan Program</p>
-            <h2 className="font-serif text-3xl md:text-4xl font-bold text-[#0f172a]">Syarat dan Ketentuan</h2>
+            <p className="text-[#b8860b] font-semibold text-sm uppercase tracking-widest mb-2">
+              Aturan Program
+            </p>
+            <h2 className="font-serif text-3xl md:text-4xl font-bold text-[#0f172a]">
+              Syarat dan Ketentuan
+            </h2>
             <BatikDivider />
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-10">
             {syarat.map((s, i) => (
-              <div key={i} className="flex items-start gap-4 p-5 bg-[#f5f7fa] rounded-xl border border-[#b8860b]/10" data-testid={`syarat-item-${i}`}>
+              <div
+                key={i}
+                className="flex items-start gap-4 p-5 bg-[#f5f7fa] rounded-xl border border-[#b8860b]/10"
+                data-testid={`syarat-item-${i}`}
+              >
                 <div className="w-8 h-8 bg-[#b8860b] rounded-full flex items-center justify-center text-white font-bold text-sm flex-shrink-0">
                   {i + 1}
                 </div>
@@ -185,7 +269,10 @@ export default function AjakTeman() {
             <div>
               <h4 className="font-bold text-red-700 mb-1">Perhatian Penting</h4>
               <p className="text-red-600 text-sm leading-relaxed">
-                Segala bentuk pelanggaran terhadap ketentuan program ini, termasuk pemalsuan data referral atau penipuan, akan ditindaklanjuti secara serius oleh pihak berwajib. Pastikan semua referral yang diajukan adalah nyata dan sah.
+                Segala bentuk pelanggaran terhadap ketentuan program ini,
+                termasuk pemalsuan data referral atau penipuan, akan
+                ditindaklanjuti secara serius oleh pihak berwajib. Pastikan
+                semua referral yang diajukan adalah nyata dan sah.
               </p>
             </div>
           </div>
@@ -193,23 +280,41 @@ export default function AjakTeman() {
       </section>
 
       {/* ─── FAQ ─── */}
-      <section className="py-20 relative overflow-hidden" style={{ background: "linear-gradient(180deg, #f5f7fa 0%, #eef0f5 100%)" }} data-testid="section-faq">
+      <section
+        className="py-20 relative overflow-hidden"
+        style={{
+          background: "linear-gradient(180deg, #f5f7fa 0%, #eef0f5 100%)",
+        }}
+        data-testid="section-faq"
+      >
         <div className="absolute inset-0 batik-pattern-bg opacity-20 pointer-events-none" />
         <div className="relative max-w-3xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-14">
-            <p className="text-[#b8860b] font-semibold text-sm uppercase tracking-widest mb-2">Pertanyaan Umum</p>
-            <h2 className="font-serif text-3xl md:text-4xl font-bold text-[#0f172a]">FAQ</h2>
+            <p className="text-[#b8860b] font-semibold text-sm uppercase tracking-widest mb-2">
+              Pertanyaan Umum
+            </p>
+            <h2 className="font-serif text-3xl md:text-4xl font-bold text-[#0f172a]">
+              FAQ
+            </h2>
             <BatikDivider />
           </div>
 
           <div className="space-y-4">
             {faqs.map((faq, i) => (
-              <div key={i} className="bg-white rounded-xl p-6 shadow-sm border border-gray-100" data-testid={`faq-item-${i}`}>
+              <div
+                key={i}
+                className="bg-white rounded-xl p-6 shadow-sm border border-gray-100"
+                data-testid={`faq-item-${i}`}
+              >
                 <h4 className="font-serif font-bold text-[#0f172a] mb-3 flex items-start gap-2">
-                  <span className="text-[#b8860b] font-bold text-sm mt-0.5 flex-shrink-0">Q:</span>
+                  <span className="text-[#b8860b] font-bold text-sm mt-0.5 flex-shrink-0">
+                    Q:
+                  </span>
                   {faq.q}
                 </h4>
-                <p className="text-gray-600 text-sm leading-relaxed ml-6">{faq.a}</p>
+                <p className="text-gray-600 text-sm leading-relaxed ml-6">
+                  {faq.a}
+                </p>
               </div>
             ))}
           </div>
@@ -217,7 +322,13 @@ export default function AjakTeman() {
       </section>
 
       {/* ─── CTA ─── */}
-      <section className="py-20 relative overflow-hidden" style={{ background: "linear-gradient(135deg, #4c1d95 0%, #5b21b6 100%)" }} data-testid="section-ajak-cta">
+      <section
+        className="py-20 relative overflow-hidden"
+        style={{
+          background: "linear-gradient(135deg, #4c1d95 0%, #5b21b6 100%)",
+        }}
+        data-testid="section-ajak-cta"
+      >
         <div className="absolute inset-0 batik-kawung-bg opacity-20 pointer-events-none" />
         <div className="relative max-w-3xl mx-auto px-4 sm:px-6 text-center">
           <BatikFlower size={48} color="#ffd700" className="mx-auto mb-6" />
@@ -225,11 +336,13 @@ export default function AjakTeman() {
             Tunggu Apa Lagi?
           </h2>
           <p className="text-purple-200 text-lg mb-8 leading-relaxed">
-            Kapan lagi bisa belajar bareng sahabat di Widya Nusantara Academy sekaligus dapat uang tunai! Yuk, sebarkan info ini dan mulai ajak teman-temanmu sekarang juga!
+            Kapan lagi bisa belajar bareng sahabat di Widya Nusantara Academy
+            sekaligus dapat uang tunai! Yuk, sebarkan info ini dan mulai ajak
+            teman-temanmu sekarang juga!
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
-              href="https://wa.me/6289536039675?text=Halo%2C%20saya%20ingin%20bergabung%20dengan%20program%20Ajak%20Teman%20di%20Widya%20Nusantara%20Academy!"
+              href="https://wa.me/62895360396759?text=Halo%2C%20saya%20ingin%20bergabung%20dengan%20program%20Ajak%20Teman%20di%20Widya%20Nusantara%20Academy!"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 px-8 py-4 bg-[#ffd700] hover:bg-[#b8860b] text-[#0f172a] font-bold text-lg rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
@@ -246,7 +359,6 @@ export default function AjakTeman() {
           </div>
         </div>
       </section>
-
     </div>
   );
 }
