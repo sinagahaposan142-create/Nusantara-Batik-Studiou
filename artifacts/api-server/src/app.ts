@@ -1,6 +1,5 @@
 import express, { type Express } from "express";
 import cors from "cors";
-import pinoHttp from "pino-http";
 import router from "./routes";
 import { logger } from "./lib/logger";
 
@@ -8,25 +7,20 @@ const pino = pinoHttp as unknown as any;
 
 const app: Express = express();
 
-app.use(
-  pino({
-    logger,
-    serializers: {
-      req(req: any) {
-        return {
-          id: req.id,
-          method: req.method,
-          url: req.url?.split("?")[0],
-        };
-      },
-      res(res: any) {
-        return {
-          statusCode: res.statusCode,
-        };
-      },
-    },
-  }),
-);
+app.use((req, res, next) => {
+  const start = Date.now();
+
+  res.on("finish", () => {
+    logger.info({
+      method: req.method,
+      url: req.url,
+      status: res.statusCode,
+      duration: Date.now() - start,
+    });
+  });
+
+  next();
+});
 
 app.use(cors());
 app.use(express.json({ limit: "15mb" }));
